@@ -66,7 +66,7 @@ export default function AddressInput({ user, onChangeAddress }: Props) {
 
   return (
     <div className="mt-3 border-2 border-emerald-500 border-solid rounded-xl p-5 mx-auto flex-col h-fit">
-      <h4>AddressInput</h4>
+      <h4 className="underline font-bold">AddressInput</h4>
       <div className="space-y-3">
         <PrefectureInput onChangePrefecture={handleChangePrefecture} prefecture={prefecture}/>
         <CityInput onChangeCity={handleChangeCity} city={city}/>

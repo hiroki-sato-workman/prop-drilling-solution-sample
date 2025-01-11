@@ -1,6 +1,7 @@
 import {AddressType, NewUserInfoType, UserType} from '~/user.type';
 import {Fragment, useState} from 'react';
 import UserInput from 'app/routes/components/UserInput';
+import UserDisplay from '~/routes/components/UserDisplay';
 
 const INITIAL_USER: UserType[] = [{
   id: '1111-2222-3333',
@@ -30,9 +31,9 @@ export default function Main() {
   const [users, setUsers] = useState(INITIAL_USER)
 
   /**
-   *
-   * @param updateUserId
-   * @param newUserInfo
+   * ユーザー情報を更新する
+   * @param updateUserId 更新するユーザーid
+   * @param newUserInfo 新しいユーザー情報
    */
   const handleChangeUserInfo = (updateUserId: string, newUserInfo: NewUserInfoType) => {
     setUsers((prevState) => {
@@ -49,9 +50,9 @@ export default function Main() {
   }
 
   /**
-   *
-   * @param updateUserId
-   * @param newAddress
+   * 住所を更新する
+   * @param updateUserId 更新するユーザーid
+   * @param newAddress 新しい住所
    */
   const handleChangeAddress = (updateUserId: string, newAddress: AddressType) => {
     setUsers((prevState) => {
@@ -68,20 +69,16 @@ export default function Main() {
   }
 
   return (
-    <div className="container border-2 border-emerald-900 border-solid rounded-xl p-5 mx-auto flex space-x-5 mt-20 w-fit">
-      <div>
-        <h2>Main</h2>
-        <pre className="mt-5 border bg-emerald-300 dark:bg-emerald-600">{JSON.stringify(users, null, 2)}</pre>
-      </div>
-      <div className="mt-11 flex space-x-5">
+    <div className="container border-2 border-emerald-900 border-solid rounded-xl p-5 mx-auto my-20 flex-col divide-y w-6/12 shadow-lg shadow-cyan-900">
+        <h2 className="underline font-bold">Main</h2>
         {users.map((user) => {
           return (
-            <Fragment key={user.id}>
+            <div key={user.id} className="mt-5 space-y-3">
+              <UserDisplay user={user}/>
               <UserInput user={user} onChangeUserInfo={handleChangeUserInfo} onChangeAddress={handleChangeAddress}/>
-            </Fragment>
+            </div>
           )
         })}
-      </div>
     </div>
   )
 }

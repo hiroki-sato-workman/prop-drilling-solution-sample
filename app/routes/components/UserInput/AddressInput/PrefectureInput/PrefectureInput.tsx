@@ -24,8 +24,9 @@ export default function PrefectureInput({ prefecture, onChangePrefecture }: Prop
 
   return (
     <div className="mt-3 border-2 border-emerald-300 border-solid rounded-xl p-3 mx-auto flex-col space-y-2">
-      <h5>PrefectureInput</h5>
+      <h5 className="underline font-bold">PrefectureInput</h5>
       <select
+        className="w-full p-2 rounded-lg border border-teal-200 bg-teal-50 dark:bg-teal-950"
         defaultValue={prefecture}
         onChange={handleChangeInput}
       >
