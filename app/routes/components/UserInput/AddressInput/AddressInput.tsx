@@ -3,6 +3,7 @@ import PrefectureInput from './PrefectureInput';
 import CityInput from './CityInput';
 import TownInput from './TownInput';
 import BuildingInput from './BuildingInput';
+import {componentContainerStyle, componentTitleStyle} from '~/classes';
 
 type Props = {
   user: UserType
@@ -65,8 +66,8 @@ export default function AddressInput({ user, onChangeAddress }: Props) {
   }
 
   return (
-    <div className="mt-3 border-2 border-emerald-500 border-solid rounded-xl p-5 mx-auto flex-col h-fit">
-      <h4 className="underline font-bold">AddressInput</h4>
+    <div className={`${componentContainerStyle} border-emerald-500`}>
+      <h4 className={componentTitleStyle}>AddressInput</h4>
       <div className="space-y-3">
         <PrefectureInput onChangePrefecture={handleChangePrefecture} prefecture={prefecture}/>
         <CityInput onChangeCity={handleChangeCity} city={city}/>

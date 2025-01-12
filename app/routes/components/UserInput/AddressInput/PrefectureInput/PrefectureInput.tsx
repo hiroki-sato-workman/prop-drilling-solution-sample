@@ -1,3 +1,5 @@
+import {commonInputStyle, componentContainerStyle, componentTitleStyle} from '~/classes';
+
 const prefectures = [
   '北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県',
   '茨城県', '栃木県', '群馬県', '埼玉県', '千葉県', '東京都', '神奈川県',
@@ -23,10 +25,10 @@ export default function PrefectureInput({ prefecture, onChangePrefecture }: Prop
   }
 
   return (
-    <div className="mt-3 border-2 border-emerald-300 border-solid rounded-xl p-3 mx-auto flex-col space-y-2">
-      <h5 className="underline font-bold">PrefectureInput</h5>
+    <div className={`${componentContainerStyle} border-emerald-300`}>
+      <h5 className={componentTitleStyle}>PrefectureInput</h5>
       <select
-        className="w-full p-2 rounded-lg border border-teal-200 bg-teal-50 dark:bg-teal-950"
+        className={`w-full ${commonInputStyle}`}
         defaultValue={prefecture}
         onChange={handleChangeInput}
       >

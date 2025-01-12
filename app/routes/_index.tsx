@@ -2,6 +2,7 @@ import {AddressType, NewUserInfoType, UserType} from '~/user.type';
 import {Fragment, useState} from 'react';
 import UserInput from 'app/routes/components/UserInput';
 import UserDisplay from '~/routes/components/UserDisplay';
+import {componentContainerStyle} from '~/classes';
 
 const INITIAL_USER: UserType[] = [{
   id: '1111-2222-3333',
@@ -13,17 +14,6 @@ const INITIAL_USER: UserType[] = [{
     city: '千代田区',
     town: '千代田1-1-1',
     building: 'マンションA 101号室',
-  }
-}, {
-  id: '7777-8888-9999',
-  dob: '2000-01-01',
-  firstName: '花子',
-  lastName: '佐藤',
-  address: {
-    prefecture: '福岡県',
-    city: '中央区',
-    town: '天神1-1-1',
-    building: 'マンションB 201号室',
   }
 }]
 
@@ -69,16 +59,16 @@ export default function Main() {
   }
 
   return (
-    <div className="container border-2 border-emerald-900 border-solid rounded-xl p-5 mx-auto my-20 flex-col divide-y w-6/12 shadow-lg shadow-cyan-900">
-        <h2 className="underline font-bold">Main</h2>
-        {users.map((user) => {
-          return (
-            <div key={user.id} className="mt-5 space-y-3">
-              <UserDisplay user={user}/>
-              <UserInput user={user} onChangeUserInfo={handleChangeUserInfo} onChangeAddress={handleChangeAddress}/>
-            </div>
-          )
-        })}
+    <div className={`${componentContainerStyle} container border-emerald-900 mx-auto my-5 md:my-20 w-11/12 md:w-6/12 shadow-lg shadow-teal-900 space-y-5`}>
+      <h2 className="underline font-bold">Main</h2>
+      {users.map((user) => {
+        return (
+          <div key={user.id} className="mt-5 space-y-5">
+            <UserDisplay user={user}/>
+            <UserInput user={user} onChangeUserInfo={handleChangeUserInfo} onChangeAddress={handleChangeAddress}/>
+          </div>
+        )
+      })}
     </div>
   )
 }

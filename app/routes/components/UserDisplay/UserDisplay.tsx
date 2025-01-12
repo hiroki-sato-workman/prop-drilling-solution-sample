@@ -1,6 +1,7 @@
 import {UserType} from '~/user.type';
-import UserTextDisplay from '~/routes/components/UserDisplay/UserTextDisplay';
+import UserTextDisplay from './UserTextDisplay';
 import {useMemo} from 'react';
+import {componentContainerStyle, componentTitleStyle} from '~/classes';
 
 type Props = {
   user: UserType
@@ -15,8 +16,8 @@ export default function UserDisplay({ user }: Props) {
   const dayOfDob = useMemo(() => dob.split('-')[2], [dob])
 
   return (
-    <div className="mt-5 border-2 border-emerald-700 border-solid rounded-xl p-3 mx-auto flex-col space-y-2">
-      <h3 className="underline font-bold">UserDisplay</h3>
+    <div className={`${componentContainerStyle} border-emerald-700 space-y-1`}>
+      <h3 className={componentTitleStyle}>UserDisplay</h3>
       <div>id: {id}</div>
 
       <div className="flex space-x-1">

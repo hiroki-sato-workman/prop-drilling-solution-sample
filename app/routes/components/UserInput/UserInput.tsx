@@ -1,5 +1,6 @@
 import {AddressType, NewUserInfoType, UserType} from '~/user.type';
 import AddressInput from './AddressInput';
+import {commonInputStyle, componentContainerStyle, componentTitleStyle} from '~/classes';
 
 type Props = {
   user: UserType
@@ -55,15 +56,18 @@ export default function UserInput({ user, onChangeUserInfo, onChangeAddress }: P
   }
 
   return (
-    <div className="border-2 border-emerald-700 border-solid rounded-xl p-5 flex-col h-fit">
-      <h3 className="underline font-bold">UserInput</h3>
+    <div className={`${componentContainerStyle} border-emerald-700`}>
+      <h3 className={componentTitleStyle}>UserInput</h3>
       <div className="my-2">
         id: {user.id}
       </div>
       <div className="flex space-x-2">
-        <input className="w-3/12 my-2 p-2 rounded-lg border border-teal-200 bg-teal-50 dark:bg-teal-950" defaultValue={user.lastName} onChange={(e) => handleChangeLastName(e.target.value)}/>
-        <input className="w-3/12 my-2 p-2 rounded-lg border border-teal-200 bg-teal-50 dark:bg-teal-950" defaultValue={user.firstName} onChange={(e) => handleChangeFirstName(e.target.value)}/>
-        <input className="w-6/12 my-2 p-2 rounded-lg border border-teal-200 bg-teal-50 dark:bg-teal-950" defaultValue={user.dob} onChange={(e) => handleChangeDob(e.target.value)} type="date" />
+        <input className={`w-3/12 ${commonInputStyle}`} defaultValue={user.lastName}
+               onChange={(e) => handleChangeLastName(e.target.value)}/>
+        <input className={`w-3/12 ${commonInputStyle}`} defaultValue={user.firstName}
+               onChange={(e) => handleChangeFirstName(e.target.value)}/>
+        <input className={`w-6/12 ${commonInputStyle}`} defaultValue={user.dob}
+               onChange={(e) => handleChangeDob(e.target.value)} type="date"/>
       </div>
       <AddressInput user={user} onChangeAddress={onChangeAddress}/>
     </div>
