@@ -1,4 +1,9 @@
 import {commonInputStyle, componentContainerStyle, componentTitleStyle} from '~/classes';
+import {updateAddressAtom, usersAtom} from '~/atoms/userAtom';
+import {useAtom, useSetAtom} from 'jotai';
+import {ChangeEvent} from 'react';
+import {AddressType} from '~/user.type';
+import {useUpdateUserInfo} from '~/utils/useUpdateUserInfo';
 
 const prefectures = [
   '北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県',
@@ -11,18 +16,12 @@ const prefectures = [
 ];
 
 type Props = {
+  userId: string
   prefecture: string
-  onChangePrefecture: (newPrefecture: string) => void
 }
 
-export default function PrefectureInput({ prefecture, onChangePrefecture }: Props) {
-  /**
-   * 県を変更したとき
-   * @param e 入力イベント
-   */
-  const handleChangeInput = (e) => {
-    onChangePrefecture(e.target.value)
-  }
+export default function PrefectureInput({ userId, prefecture }: Props) {
+  const updateAddress = useSetAtom(updateAddressAtom)
 
   return (
     <div className={`${componentContainerStyle} border-emerald-300`}>
@@ -30,7 +29,13 @@ export default function PrefectureInput({ prefecture, onChangePrefecture }: Prop
       <select
         className={`w-full ${commonInputStyle}`}
         defaultValue={prefecture}
-        onChange={handleChangeInput}
+        onChange={(e) => updateAddress(
+          {
+            userId,
+            target: 'prefecture',
+            newValue: e.target.value,
+          })
+        }
       >
         <option value="">--選択してください--</option>
         {prefectures.map((prefecture) => (
