@@ -61,6 +61,8 @@ export default function UserInput({ user, onChangeUserInfo, onChangeAddress }: P
       <div className="my-2">
         id: {user.id}
       </div>
+
+      {/* ユーザー情報入力欄*/}
       <div className="flex space-x-2">
         <input className={`w-3/12 ${commonInputStyle}`} defaultValue={user.lastName}
                onChange={(e) => handleChangeLastName(e.target.value)}/>
@@ -69,6 +71,8 @@ export default function UserInput({ user, onChangeUserInfo, onChangeAddress }: P
         <input className={`w-6/12 ${commonInputStyle}`} defaultValue={user.dob}
                onChange={(e) => handleChangeDob(e.target.value)} type="date"/>
       </div>
+
+      {/* 住所入力欄 */}
       <AddressInput user={user} onChangeAddress={onChangeAddress}/>
     </div>
   )

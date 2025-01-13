@@ -20,17 +20,20 @@ export default function UserDisplay({ user }: Props) {
       <h3 className={componentTitleStyle}>UserDisplay</h3>
       <div>id: {id}</div>
 
+      {/* 名前 */}
       <div className="flex space-x-1">
         <UserTextDisplay text={lastName}/>
         <UserTextDisplay text={firstName}/>
       </div>
 
+      {/* 生年月日 */}
       <div className="flex space-x-1">
         <UserTextDisplay text={yearOfDob}/>年
         <UserTextDisplay text={monthOfDob}/>月
         <UserTextDisplay text={dayOfDob}/>日
       </div>
 
+      {/* 住所 */}
       <div className="flex space-x-1 flex-wrap">
         <UserTextDisplay text={prefecture}/>
         <UserTextDisplay text={city}/>

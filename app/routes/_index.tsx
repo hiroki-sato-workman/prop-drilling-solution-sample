@@ -64,7 +64,9 @@ export default function Main() {
       {users.map((user) => {
         return (
           <div key={user.id} className="mt-5 space-y-5">
+            {/* ユーザー情報表示 */}
             <UserDisplay user={user}/>
+            {/* ユーザー情報入力 */}
             <UserInput user={user} onChangeUserInfo={handleChangeUserInfo} onChangeAddress={handleChangeAddress}/>
           </div>
         )
